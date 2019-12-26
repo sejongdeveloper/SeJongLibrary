@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자동완성 기능</title>
+</head>
+
+<link rel="stylesheet" type="text/css" href="css/autocomplete.css">
+
+<body>
+
+<div class="srch_form autocomplete"> 
+	<input type="text" id="testId" autocomplete="off"/>
+</div>
+
+</body>
+
+<script type="text/javascript" src="js/autocomplete.js"></script>
+<script type="text/javascript">
+
+window.onload = function() {
+	// 배열
+	var testArr = ['James', 'John', 'Robert', 'Michael', 'William', 'David', 'Richard', 'Charles', 'Joseph', 'Thomas'];
+	
+	//autocomplete 부분을 생성
+	autocomplete.setAutocomplete(document.getElementById("testId"), testArr);
+} // onload() end
+
+</script>
+
+</html>
