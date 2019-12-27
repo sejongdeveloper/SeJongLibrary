@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>체크박스 기능</title>
+</head>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+
+<body>
+
+<ul>
+	<li><input type="checkbox" class="testGroup" name="a"></li>
+	<li><input type="checkbox" class="testGroup" name="b"></li>
+	<li><input type="checkbox" class="testGroup" name="c" value="Y"></li>
+</ul>
+
+</body>
+  
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	// 값이 Y이면 체크
+	$("input[type='checkbox']").each(function() {
+		if(this.value === "Y"){ 
+	    	this.checked = true; 
+	    }
+	}); // each() end
+	
+	
+	// 체크 유무에 따른 변경
+	$("input[type='checkbox']").change(function() { 
+		// 체크한 경우
+		if(this.checked === true) { 
+			this.value = 'Y'; 
+
+			var isCheck = true;
+			
+			$('.'+this.className).each(function(index) {
+				if(index !== 0 && !this.checked) isCheck = false;
+			});
+			
+			if(isCheck) {
+				$('.'+this.className).prop('checked', true);
+			}
+			
+		// 체크해제한 경우
+		} else { 
+			this.value = 'N';
+			$('.'+this.className)[0].checked = false;
+		} // if() end		
+	}); // change() end
+	
+	
+	// 전체클릭 체크박스 기능
+	$("input:checkbox[name='a']").click(function() {
+		if(this.checked) {
+			$('.'+this.className).prop('checked', true);
+		} else {
+			$('.'+this.className).prop('checked', false);
+		}
+	});
+}); // ready() end
+
+</script>
+
+</html>
